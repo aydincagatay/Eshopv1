@@ -26,7 +26,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/new", name="admin_category_new", methods="GET|POST")
      */
-    public function new(Request $request,CategoryRepository $categoryRepository): Response
+    public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
         $catlist = $categoryRepository->findAll();
         $category = new Category();
@@ -48,7 +48,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}", name="admin_category_show", methods="GET")
      */
-    public function show(Category $category): Response
+    public function show(Category $category, CategoryRepository $categoryRepository): Response
     {
         return $this->render('admin/category/show.html.twig', ['category' => $category]);
     }
@@ -56,7 +56,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_category_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Category $category,CategoryRepository $categoryRepository): Response
+    public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $catlist = $categoryRepository->findAll();
         $form = $this->createForm(CategoryType::class, $category);
@@ -80,7 +80,7 @@ class CategoryController extends AbstractController
      */
     public function delete(Request $request, Category $category): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();

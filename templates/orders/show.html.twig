@@ -1,0 +1,100 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Orders{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'home/_usersidebar.html.twig' %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div style="margin-right: 30px;margin-left: 323px">
+        <section id="cart_items">
+            <div class="">
+                <div class="breadcrumbs">
+                    <ol class="breadcrumb">
+                        <li><a href="{{ path('home') }}">Home</a></li>
+                        <li><a href="{{  path('orders_index') }}">Siparişlerim</a></li>
+                        <li class="active">Ürün Detayı</li>
+                    </ol>
+                </div><!--/breadcrums-->
+
+                <h1>Fatura Bilgileri</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Name</th>
+                        <th>Sale Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total=0 %}
+                    {% for rs in orderdetail %}
+                        <tr>
+                            <td>{{ rs.id }}</td>
+                            <td>{{ rs.name }}</td>
+                            <td>{{ rs.price }}</td>
+                            <td>{{ rs.quantity }}</td>
+                            <td>{{ rs.amount }}</td>
+                            <td>{{ rs.status }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="12">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <table class="table-condensed">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ order.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Userid</th>
+                        <td>{{ order.userid }}</td>
+                    </tr>
+                    <tr>
+                        <th>Amount</th>
+                        <td>{{ order.amount }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ order.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ order.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>City</th>
+                        <td>{{ order.city }}</td>
+                    </tr>
+                    <tr>
+                        <th>Shipinfo</th>
+                        <td>{{ order.shipinfo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ order.status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Note</th>
+                        <td>{{ order.note }}</td>
+                    </tr>
+                    </tbody>
+                    <td><b>Toplam alışveriş tutarı : {{ order.amount }} ₺</b></td>
+
+                </table>
+
+
+
+                <br><br><br>
+            </div>
+        </section> <!--/#cart_items-->
+    </div>
+{% endblock %}

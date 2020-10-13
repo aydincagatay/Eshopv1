@@ -1,0 +1,57 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Sign up!{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'home/_usersidebar.html.twig' %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div style="margin-right: 30px;margin-left: 323px">
+            <hr>
+            Ad   :   {{ app.users.name }}<hr>
+            Email:   {{ app.users.email }}<hr>
+        </div>
+    {% else %}
+            <div class="container">
+               
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="login-form"><!--login form-->
+                            <div class="signup-form"><!--sign up form-->
+							 {{ include('messages.html.twig') }}
+                                <h2>New user Signup!</h2>
+                                <form name="user" method="post">
+                                    <input type="text" name="user[name]" value="{{ user.name }}" placeholder="Adı soyadı">
+                                    <input type="email" name="user[email]" value="{{ user.email }}" placeholder="Email Adresi">
+                                    <input type="password" name="user[password]" value="{{ user.password }}"  placeholder="Şifre">
+                                    <input type="text" name="user[address]" value="{{ user.address }}"  placeholder="Adres">
+                                    <input type="text" name="user[city]" value="{{ user.city }}" placeholder="Şehir">
+                                    <input type="text" name="user[phone]" value="{{ user.phone }}" placeholder="Telefon">
+                                    <input type="hidden" name="user[roles]"  value="ROLE_USER">
+                                    <input type="hidden" name="token" value="{{ csrf_token('user-form') }}"/>
+                                    <button type="submit" class="btn btn-default">Üye ol</button>
+                                </form>
+
+                            </div><!--/sign up form-->
+                        </div>
+                  </div>
+               </div>
+                <br>
+                <hr>
+            </div>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

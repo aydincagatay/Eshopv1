@@ -1,0 +1,84 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Shopcart index{% endblock %}
+{% block sidebar %}{% include 'home/_usersidebar.html.twig' %}{% endblock %}
+
+{% block content %}
+    <div style="margin-right: 30px;margin-left: 323px">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li class="active">Sepetim</li>
+            </ol>
+        </div><!--/breadcrums-->
+        {{ include ('messages.html.twig') }}
+        <section id="cart_items">
+            <div class="table-responsive cart_info">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr class="cart_menu">
+                        <th>Ürünün resmi</th>
+                        <th>Ürünün adı</th>
+                        <th>Adedi</th>
+                        <th>Fiyatı</th>
+                        <th>Toplam</th>
+                        <th>Aksiyonlar</th>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total=0 %}
+                    {% for shopcart in shopcarts %}
+                        <tr>
+                            <td class="cart_product">
+                                    <img src="{{ asset("uploads") }}/images/{{ shopcart.image }}" class="girl img-responsive" style="max-width: 55px" alt="" />
+                            </td>
+                            <td class="cart_description">
+                                <h4>{{ shopcart.title }}</h4>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">{{ shopcart.quantity }}</p>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">{{ shopcart.sprice }}</p>
+                            </td>
+                            <td class="cart_total">
+                                {% set total=total +(shopcart.quantity * shopcart.sprice) %}
+                                <p class="cart_total_price">{{ total }}</p>
+                            </td>
+                            <td class="cart_delete" style="position: absolute;margin-top: 20px">
+                                {{ include('shopcart/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">Lütfen sepete bir şeyler ekleyin</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="do_action">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="total_area">
+                        <ul>
+                            <li>Total <span>{{ total }}</span></li>
+                        </ul>
+                        {% if  total !=0 %}
+                        <div style="margin-left: 20px">
+                            <a class="btn btn-default check_out" href="{{ path('orders_new') }}">Ödemeye geç</a>
+                        </div>
+                        {% else %}
+                            <div style="margin-left: 43px">Lütfen sepete bir şeyler ekleyin<</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section><!--/#do_action-->
+
+    </div>
+
+{% endblock %}

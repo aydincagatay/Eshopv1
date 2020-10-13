@@ -1,0 +1,48 @@
+<form class="form-horizontal" method="post">
+    <div class="form-group">
+        <label  class="col-sm-2 control-label hor-form">Üst kategori</label>
+        <div class="col-sm-10">
+            <select name="category[parentid]" class="form-control">
+                <option>{{ category.parentid }}</option>
+                {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label hor-form">Başlık</label>
+        <div class="col-sm-10">
+            <input type="text" name="category[title]" class="form-control" value="{{ category.title }}"  placeholder="Title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label hor-form">Anahtar kelimeler</label>
+        <div class="col-sm-10">
+            <input type="text" name="category[keywords]" class="form-control" value="{{ category.keywords }}"  placeholder="Anahtar Kelimeler">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label hor-form">Açıklamalar</label>
+        <div class="col-sm-10">
+            <input type="text" name="category[description]" class="form-control" value="{{ category.description }}"  placeholder="Açıklamalar">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label hor-form">Aktif durumu</label>
+    <div class="col-sm-10">
+        <select name="category[status]" class="form-control">
+            <option>{{ category.status }}</option>
+            <option value="True">Aktif</option>
+            <option value="False">Pasif</option>
+        </select>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Onayla</button>
+            <a href="{{ path('admin_category_index') }} "class="btn btn-default">Listeye dön</a>
+        </div>
+    </div>
+</form>

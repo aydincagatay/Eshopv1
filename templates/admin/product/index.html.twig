@@ -1,0 +1,116 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ürün Detay{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/table-style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/basictable.css"/>
+    <script type="text/javascript" src="{{ asset('admin') }}/js/jquery.basictable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table').basictable();
+            $('#table-breakpoint').basictable({
+                breakpoint: 1
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-two-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet'
+          type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/icon-font.min.css" type='text/css'/>
+    <h3>Ürün Detay &emsp;
+        <a href="{{ path('admin_product_new') }}" class="hvr-icon-float-away col-12"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yeni
+            Ürün</a>
+    </h3>
+    {{ include ('messages.html.twig') }}
+    <table id="table-one-axis" class="one-axis">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Miktar</th>
+            <th>Alış fiyatı</th>
+            <th>Satış fiyatı</th>
+            <th>Min</th>
+            <th>Resim</th>
+            <th>Galeri</th>
+            <th>Kategorisi</th>
+            <th>Durum</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.amount }}</td>
+                <td>{{ product.pprice }}</td>
+                <td>{{ product.sprice }}</td>
+                <td>{{ product.min }}</td>
+                <td>
+                    <a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scroolBars=no,resizable=no,width=600,height=500');">
+                        {% if product.image == null %}
+                            <img src="{{ url('admin') }}/img/add.png" height="30">
+                        {% else %}
+                            <img src="{{ asset('uploads') }}/images/{{ product.image }}" height="30">
+                        {% endif %}
+                    </a>
+                </td>
+                <td>
+                    <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scroolBars=no,resizable=no,width=1000,height=800');">
+                        <img src="{{  url('admin') }}/img/gallery.png" height="30"></a></td>
+                <td>{{ product.categoryId }}</td>
+                <td>{{ product.status }}</td>
+                <td>
+                    <a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-xs btn-primary btn-block col-20">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_product_edit', {'id': product.id}) }}"
+                       class="btn btn-xs btn-primary btn-block">edit</a>
+                </td>
+                <td>
+                    {{ include('admin/product/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_product_new') }}">Create new</a>
+    <script src="{{ asset('admin') }}/js/jquery.nicescroll.js"></script>
+    <script src="{{ asset('admin') }}/js/scripts.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('admin') }}/js/bootstrap.min.js"></script>
+    <!-- /Bootstrap Core JavaScript -->
+    <div class="inner-block">
+        <!-- /Inner block lazım olabilir template'de vardı... -->
+    </div>
+    <br><!-- /Footer ile arada boşluk kalmamıştı br attım.Kod eksik geldi büyük ihtimal -->
+{% endblock %}
+

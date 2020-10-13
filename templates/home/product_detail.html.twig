@@ -1,0 +1,104 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %} {% include 'home/_sidebar.html.twig' %} </div>  {% endblock %}
+
+{% block content %}
+    <div class="col-sm-9 padding-right">
+        <div class="product-details"><!--product-details-->
+            <div class="col-sm-5">
+                <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-5" style="position: relative">
+                                <img src="{{ asset("uploads") }}/images/{{ data[0].image }}" class="girl img-responsive" style="max-width:250%" alt="" />
+                            </div>
+                        </div>
+                        {% for slider in sliders %}
+                                <div class="item">
+                                    <div class="col-sm-5" style="position: relative">
+                                        <img src="{{ asset("uploads") }}/images/{{ slider.image }}" class="girl img-responsive" style="max-width:250%"  alt="" />
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Controls -->
+                    <a class="left item-control" href="#similar-product" data-slide="prev" style="top: 50%">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right item-control" href="#similar-product" data-slide="next" style="top: 50%">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </div>
+            </div>
+            <div class="col-sm-7" style="margin-top: 105px">
+                <div class="product-information"><!--/product-information-->
+                    <h2>{{ data[0].title }}</h2>
+                    <span>
+									<span>{{ data[0].sprice }} ₺</span>
+                                    <form name="shopcart" class="form-horizontal cart_quantity_input" action="{{ path('shopcart_new') }}" method="post">
+									<label>Adet:</label>
+									<input type="number" value="1" name="quantity" class="span" placeholder="Qty." max="{{ data[0].amount }}">
+                                    <input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+                                    <input type="hidden" name="token" value="{{ csrf_token('add_item') }}">
+                                    <button type="submit" class="btn btn-fefault cart">
+										<i class="fa fa-shopping-cart"></i>
+										Sepete ekle
+									</button>
+                                        </form>
+								</span>
+                    <p><b>Stok durumu:</b> {{ data[0].amount }} adet stokta var</p>
+                </div><!--/product-information-->
+            </div>
+        </div>
+        <br><br><br><br>
+        <!--/product-details-->
+        <div class="category-tab shop-details-tab"><!--category-tab-->
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#details" data-toggle="tab">Detaylar</a></li>
+                    <li><a href="#reviews" data-toggle="tab">Yorumlar</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="details">
+                    <div class="col-sm-12">
+                    {{ data[0].detail|raw }}
+                </div>
+                </div>
+                <div class="tab-pane fade" id="reviews">
+                    <div class="col-sm-12">
+                        {% for comment in comments %}
+                            <ul>
+                                <li><a href=""><i class="fa fa-user"></i>{{ comment.name }}</a></li>
+                                <li><a href=""><i class="fa fa-clock-o"></i>{{ comment.created_at|date("h:m") }}</a></li>
+                                <li><a href=""><i class="fa fa-calendar-o"></i>{{ comment.created_at|date("m/d/Y") }}</a></li>
+                            </ul>
+                            <p>{{ comment.comment }}</p>
+                        {% endfor %}
+                        <br>
+                        <p><b>Write Your Review</b></p>
+                        <form name="comment" action="{{ path('comment_new') }}" method="post">
+                            <textarea name="comment[comment]" placeholder="Yorumunuz"></textarea>
+                            <input type="hidden" name="comment[productid]" value="{{ data[0].id }}">
+                            <input type="hidden" name="token2" value="{{ csrf_token('add_comment') }}">
+                            <button type="submit" class="btn btn-default pull-right">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div></div>
+{% endblock %}
+
+
+
+

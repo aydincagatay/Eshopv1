@@ -27,20 +27,20 @@ class ProductController extends AbstractController
     /**
      * @Route("/new", name="admin_product_new", methods="GET|POST")
      */
-    public function new(Request $request,CategoryRepository $categoryRepository): Response
+    public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
-
         $catlist = $categoryRepository->findAll();
-
-
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
-            return $this->redirectToRoute('admin_product_index');
+        $submittedToken = $request->request->get('token');
+        if ($this->isCsrfTokenValid('form-product', $submittedToken)) {
+            if ($form->isSubmitted()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($product);
+                $em->flush();
+                return $this->redirectToRoute('admin_product_index');
+            }
         }
         return $this->render('admin/product/new.html.twig', [
             'product' => $product,
@@ -60,14 +60,14 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_product_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Product $product,CategoryRepository $categoryRepository): Response
+    public function edit(Request $request, Product $product, CategoryRepository $categoryRepository): Response
     {
         $catlist = $categoryRepository->findAll();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success',"GÜNCELLEME BAŞARILI");
+            $this->addFlash('success', "GÜNCELLEME BAŞARILI");
             return $this->redirectToRoute('admin_product_index', ['id' => $product->getId()]);
         }
         return $this->render('admin/product/edit.html.twig', [
@@ -76,7 +76,6 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/{id}/iedit", name="admin_product_iedit", methods="GET|POST")
@@ -106,18 +105,14 @@ class ProductController extends AbstractController
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-        //dump($request);
-        //die();
         $file = $request->files->get('imagename');
-        $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-        // Move the file to the directory where brochures are stored
+        $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
         try {
             $file->move(
                 $this->getParameter('images_directory'),
                 $fileName
             );
         } catch (FileException $e) {
-            // ... handle exception if something happens during file upload
         }
         $product->setImage($fileName);
         $this->getDoctrine()->getManager()->flush();

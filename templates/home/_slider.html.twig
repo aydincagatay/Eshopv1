@@ -1,0 +1,59 @@
+<div class="container">
+<section id="slider" ><!--slider-->
+    <div class="container">
+        <div class="row" style="margin-right: 300px">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        <li data-target="#slider-carousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active" >
+                                <div class="col-sm-5" >
+                                    <h1><span>B</span>O<span>H</span>Ç<span>A</span></h1>
+                                    <h2>{{ sliders[0].title }}</h2>
+                                    <p>{{ sliders[0].description }}</p>
+                                    <a href="{{ path('product_detail', {'id': sliders[0].id}) }}" class="btn btn-default get"><i class="fa fa-shopping-cart"></i>  Satın al</a>
+                                </div>
+                                <div class="col-sm-5">
+                                    <img src="{{ asset("uploads") }}/images/{{ sliders[0].image }}" class="girl img-responsive" alt="" />
+                                </div>
+                        </div>
+                        {% for slider in sliders %}
+                            {% if slider == sliders[0] %}
+                            {% else %}
+                                <div class="item">
+                                    <div class="col-sm-5">
+                                        <h1><span>B</span>O<span>H</span>Ç<span>A</span></h1>
+                                        <h2>{{ slider.title }}</h2>
+                                        <p>{{ slider.description }}</p>
+                                        <a href="{{ path('product_detail', {'id': slider.id}) }}" class="btn btn-default get"><i class="fa fa-shopping-cart"></i>  Satın al</a>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <img src="{{ asset("uploads") }}/images/{{ slider.image }}" class="girl img-responsive" alt="" />
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+
+</div>
+
+

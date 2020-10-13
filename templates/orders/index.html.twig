@@ -1,0 +1,63 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Orders index{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'home/_usersidebar.html.twig' %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div style="margin-right: 30px;margin-left: 323px">
+    <section id="cart_items">
+        <div class="">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('home') }}">Home</a></li>
+                    <li class="active">Siparişlerim</li>
+                </ol>
+            </div><!--/breadcrums-->
+
+            <h1>Orders index</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Userid</th>
+                    <th>Amount</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Shipinfo</th>
+                    <th>Status</th>
+                    <th>Note</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.userid }}</td>
+                        <td>{{ order.amount }}</td>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.shipinfo }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.note }}</td>
+                        <td><a href="{{ path('orders_show', {'id': order.id}) }}">show</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="12">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <br><br><br>
+        </div>
+    </section> <!--/#cart_items-->
+</div>
+    {% endblock %}

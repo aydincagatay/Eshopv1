@@ -1,0 +1,79 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'home/_usersidebar.html.twig' %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div style="margin-right: 30px;margin-left: 323px">
+            <hr>
+            <h2>Hoşgeldiniz <span>{{ app.user.name }}</span> </h2><hr>
+        </div>
+    {% else %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="login-form"><!--login form-->
+                        <div class="signup-form"><!--sign up form-->
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                                <br>
+                                {{ include('messages.html.twig') }}
+                                <h1 class="h3 mb-3 font-weight-normal">Lütfen Giriş Yapın</h1>
+                                <hr>
+                                <label for="inputEmail" class="sr-only">Email</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus style="width:350px">
+                                <br>
+                                <label for="inputPassword" class="sr-only">Şifre</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required style="width:350px">
+
+
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+
+                                {#
+                                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                    See https://symfony.com/doc/current/security/remember_me.html
+
+                                    <div class="checkbox mb-3">
+                                        <label>
+                                            <input type="checkbox" name="_remember_me"> Remember me
+                                        </label>
+                                    </div>
+                                #}
+
+                                <button class="btn btn-lg btn-primary" type="submit">
+                                    Giriş yap
+                                </button>
+                                <hr>
+                            </form>
+
+                        </div><!--/sign up form-->
+                    </div>
+                </div>
+            </div>
+            <br>
+            <hr>
+
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

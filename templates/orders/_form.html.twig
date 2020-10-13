@@ -1,0 +1,23 @@
+{{ include('messages.html.twig') }}
+
+        <form class="form-horizontal" name="order" action="{{ path('orders_new') }}" method="post">
+            <input type="text" name="orders[name]" value="{{ app.user.name }}" placeholder="Adı Soyadı">
+            <input type="text" name="orders[address]" value="{{ app.user.address }}" placeholder="Adresi">
+            <input type="text" name="orders[city]" value="{{ app.user.city }}" placeholder="Şehir">
+            <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder="Telefon">
+            <p>Kredi Kartı Bilgileri</p>
+            <input type="text" name="cardholdername" placeholder="Kart Sahibinin Adı Soyadı">
+            <input type="text" name="cardholdernumber" placeholder="Kart Numarası">
+            <input type="text" name="cardholdervaliddates" placeholder="Son Kullanma Tarihi AY/YIL">
+            <input type="text" name="cardsecuritycode" placeholder="Güvenlik Kodu (Kartınızın arkasındaki CVC2 kodu)">
+            <input type="hidden" name="token" value="{{ csrf_token('form-order') }}"/>
+            <input class="btn btn-primary" type="submit" value="Satın Al">
+        </form>
+
+
+
+
+
+
+
+

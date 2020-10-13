@@ -1,0 +1,339 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block title %}Pooled Admin Panel Category Flat Bootstrap Responsive Web Template{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('admin') }}/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="{{ asset('admin') }}/css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/morris.css" type="text/css"/>
+    <!-- Graph CSS -->
+    <link href="{{ asset('admin') }}/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{{ asset('admin') }}/js/jquery-2.1.4.min.js"></script>
+    <!-- //jQuery -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures) {
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+    <!-- /CK editor için -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+
+
+</head>
+<body>
+<div class="page-container">
+    <!--/content-inner-->
+    <div class="left-content">
+        <div class="mother-grid-inner">
+            <!--header start here-->
+            <div class="header-main">
+                <div class="logo-w3-agile">
+                    <h1><a href="{{ path('admin') }}">BOHÇA</a></h1>
+                </div>
+                <div class="w3layouts-left">
+
+                    <!--search-box-->
+                    <div class="w3-search-box">
+                        <form action="#" method="post">
+                            <input type="text" placeholder="Search..." required="">
+                        </form>
+                    </div><!--//end-search-box-->
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="w3layouts-right">
+                    <div class="profile_details_left"><!--notifications of menu start -->
+                        <ul class="nofitications-dropdown">
+                            <li class="dropdown head-dpdn">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="notification_header">
+                                            <h3>You have 3 new messages</h3>
+                                        </div>
+                                    </li>
+                                    <li><a href="#">
+                                            <div class="user_img"><img src="{{ asset('admin') }}/images/in11.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor</p>
+                                                <p><span>1 hour ago</span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </a></li>
+                                    <li class="odd"><a href="#">
+                                            <div class="user_img"><img src="{{ asset('admin') }}/images/in10.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor </p>
+                                                <p><span>1 hour ago</span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="user_img"><img src=""{{ asset('admin') }}/images/in9.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor</p>
+                                                <p><span>1 hour ago</span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </a></li>
+                                    <li>
+                                        <div class="notification_bottom">
+                                            <a href="#">See all messages</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown head-dpdn">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="notification_header">
+                                            <h3>You have 3 new notification</h3>
+                                        </div>
+                                    </li>
+                                    <li><a href="#">
+                                            <div class="user_img"><img src="{{ asset('admin') }}/images/in8.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor</p>
+                                                <p><span>1 hour ago</span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </a></li>
+                                    <li class="odd"><a href="#">
+                                            <div class="user_img"><img src="{{ asset('admin') }}/images/in6.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor</p>
+                                                <p><span>1 hour ago</span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="user_img"><img src="{{ asset('admin') }}/images/in7.jpg" alt=""></div>
+                                            <div class="notification_desc">
+                                                <p>Lorem ipsum dolor</p>
+                                                <p><span>1 hour ago</span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </a></li>
+                                    <li>
+                                        <div class="notification_bottom">
+                                            <a href="#">See all notifications</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown head-dpdn">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="notification_header">
+                                            <h3>You have 8 pending task</h3>
+                                        </div>
+                                    </li>
+                                    <li><a href="#">
+                                            <div class="task-info">
+                                                <span class="task-desc">Database update</span><span class="percentage">40%</span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="progress progress-striped active">
+                                                <div class="bar yellow" style="width:40%;"></div>
+                                            </div>
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="task-info">
+                                                <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="progress progress-striped active">
+                                                <div class="bar green" style="width:90%;"></div>
+                                            </div>
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="task-info">
+                                                <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="progress progress-striped active">
+                                                <div class="bar red" style="width: 33%;"></div>
+                                            </div>
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="task-info">
+                                                <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="progress progress-striped active">
+                                                <div class="bar  blue" style="width: 80%;"></div>
+                                            </div>
+                                        </a></li>
+                                    <li>
+                                        <div class="notification_bottom">
+                                            <a href="#">See all pending tasks</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <div class="clearfix"> </div>
+                        </ul>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <!--notification menu end -->
+
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="profile_details w3l">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    <span class="prfil-img"><img src="{{ asset('admin') }}/images/in4.jpg" alt=""> </span>
+                                    <div class="user-name">
+                                        <p>{{ app.user.name }}</p>
+                                        <span>Administrator</span>
+                                    </div>
+                                    <i class="fa fa-angle-down"></i>
+                                    <i class="fa fa-angle-up"></i>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu">
+                                <li> <a href="#"><i class="fa fa-cog"></i> Ayarlar </a> </li>
+                                <li> <a href="#"><i class="fa fa-user"></i> Profil </a> </li>
+                                <li> <a href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i> Çıkış yap </a> </li>
+                            </ul>
+                            {% else %}
+                            Login olunmadı
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+            <!--header end here-->
+
+
+            <!-- content -->
+            {% block content %} {% endblock %}
+            <!-- //content -->
+
+
+
+            <!-- script-for sticky-nav -->
+            <script>
+                $(document).ready(function() {
+                    var navoffeset=$(".header-main").offset().top;
+                    $(window).scroll(function(){
+                        var scrollpos=$(window).scrollTop();
+                        if(scrollpos >=navoffeset){
+                            $(".header-main").addClass("fixed");
+                        }else{
+                            $(".header-main").removeClass("fixed");
+                        }
+                    });
+
+                });
+            </script>
+            <!-- /script-for sticky-nav -->
+            <!--inner block start here-->
+            <div class="inner-block">
+
+            </div>
+            <!--inner block end here-->
+            <!--copy rights start here-->
+            <div class="copyrights">
+                <p>© 2016 Pooled . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+            </div>
+            <!--COPY rights end here-->
+        </div>
+    </div>
+    <!--//content-inner-->
+
+
+
+    <!--/sidebar-menu-->
+    <div class="sidebar-menu">
+        <header class="logo1">
+            <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>
+        </header>
+        <div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+        <div class="menu">
+            <ul id="menu" >
+                <li><a href="{{ path('admin') }}"><i class="fa fa-home"></i> <span> Ana Menü</span><div class="clearfix"></div></a></li>
+                <li id="menu-academico" ><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span> Siparişler</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+                    <ul id="menu-academico-sub" >
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_orders_index',{'slug':'new'}) }}"> Yeni Sipariş</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_orders_index',{'slug':'accepted'}) }}"> Onaylanan Siparişler</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_orders_index',{'slug':'canceled'}) }}"> İptal edilenler</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_orders_index',{'slug':'inshipping'}) }}"> Kargodakiler</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_orders_index',{'slug':'completed'}) }}"> Tamamlananlar</a></li>
+                    </ul>
+                </li>
+                <li id="menu-academico" ><a href="{{ path('admin_product_index') }}"><i class="fa fa-archive"></i><span> Ürünler</span><div class="clearfix"></div></a></li>
+                <li id="menu-academico" ><a href="{{ path('admin_category_index') }}"><i class="fa fa-list-ul" aria-hidden="true"></i><span> Kategoriler</span></span><div class="clearfix"></div></a></li>
+                <li id="menu-academico" ><a href="{{ url ('admin')}}/user"><i class="fa fa-group (alias)" aria-hidden="true"></i><span> Üyeler</span></span><div class="clearfix"></div></a></li>
+                <li id="menu-academico" ><a href="#"><i class="fa fa-comments" aria-hidden="true"></i><span> Ürün Yorumları</span> <span class="fa fa-angle-right" style="float: right"></span><div class="clearfix"></div></a>
+                    <ul id="menu-academico-sub" >
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_comment_index',{'slug':'False'}) }}"> Onay Bekleyen Yorumlar</a></li>
+                        <li id="menu-academico-avaliacoes" ><a href="{{ path('admin_comment_index',{'slug':'True'}) }}"> Onaylanan Yorumlar</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('admin_messages_index') }}"><i class="fa fa-comment-o" aria-hidden="true"></i>  <span> İletişim</span><div class="clearfix"></div></a></li>
+                <li id="menu-academico" ><a href="#"><i class="fa fa-file-text-o"></i>  <span> Test</span></span><div class="clearfix"></div></a></li>
+                <li><a href="{{ path('admin_setting_index') }}"><i class="fa fa-gears"></i><span> Settings</span></span><div class="clearfix"></div></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<script>
+    var toggle = true;
+
+    $(".sidebar-icon").click(function() {
+        if (toggle)
+        {
+            $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+            $("#menu span").css({"position":"absolute"});
+        }
+        else
+        {
+            $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+            setTimeout(function() {
+                $("#menu span").css({"position":"relative"});
+            }, 400);
+        }
+
+        toggle = !toggle;
+    });
+</script>
+<!--js -->
+<script src="admin/js/jquery.nicescroll.js"></script>
+<script src="admin/js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="admin/js/bootstrap.min.js"></script>
+<!-- /Bootstrap Core JavaScript -->
+
+
+{% block javascripts %} {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Profil Bilgileri Düzenleme{% endblock %}
+{% block sidebar %}{% include 'home/_usersidebar.html.twig' %}{% endblock %}
+{% block content %}
+        <div style="margin-right: 30px;margin-left: 323px">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('home') }}">Home</a></li>
+                    <li class="active">Düzenleme</li>
+                </ol>
+            </div><!--/breadcrums-->
+            {% include 'userpanel/_form.html.twig' %}
+        </div>
+    {% endblock %}

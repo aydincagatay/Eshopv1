@@ -1,0 +1,82 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Orders index{% endblock %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Home</a><i class="fa fa-angle-right"></i>Siparişler</li>
+    </ol>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/table-style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/basictable.css"/>
+    <script type="text/javascript" src="{{ asset('admin') }}/js/jquery.basictable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table').basictable();
+            $('#table-breakpoint').basictable({
+                breakpoint: 1
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-two-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet'
+          type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/icon-font.min.css" type='text/css'/>
+    <table id="table-one-axis" class="one-axis">
+
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Userid</th>
+            <th>Miktar</th>
+            <th>İsim</th>
+            <th>Adres</th>
+            <th>Şehir</th>
+            <th>Sipariş bilgileri</th>
+            <th>Durum</th>
+            <th>Not</th>
+            <th>Aksiyonlar</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.userid }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.name }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.shipinfo }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.note }}</td>
+                <td><a href="javascript:openWin('{{ path('admin_orders_show',{'id': order.id})  }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scroolBars=no,resizable=no,width=1000,height=800');">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

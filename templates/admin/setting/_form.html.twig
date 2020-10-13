@@ -1,0 +1,288 @@
+<form class="form-horizontal" method="post">
+    <div class="container">
+        <section id="fancyTabWidget" class="tabs t-tabs">
+            <ul class="nav nav-tabs fancyTabs" role="tablist">
+
+                <li class="tab fancyTab active">
+                    <div class="arrow-down">
+                        <div class="arrow-down-inner"></div>
+                    </div>
+                    <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true"
+                       data-toggle="tab" tabindex="0"><span class="fa fa-desktop"></span><span class="hidden-xs">Genel Bilgiler</span></a>
+                    <div class="whiteBlock"></div>
+                </li>
+
+                <li class="tab fancyTab">
+                    <div class="arrow-down">
+                        <div class="arrow-down-inner"></div>
+                    </div>
+                    <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true"
+                       data-toggle="tab" tabindex="0"><span class="fa fa-firefox"></span><span class="hidden-xs">Email Server</span></a>
+                    <div class="whiteBlock"></div>
+                </li>
+
+                <li class="tab fancyTab">
+                    <div class="arrow-down">
+                        <div class="arrow-down-inner"></div>
+                    </div>
+                    <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true"
+                       data-toggle="tab" tabindex="0"><span class="fa fa-envira"></span><span class="hidden-xs">Hakkımızda</span></a>
+                    <div class="whiteBlock"></div>
+                </li>
+
+                <li class="tab fancyTab">
+                    <div class="arrow-down">
+                        <div class="arrow-down-inner"></div>
+                    </div>
+                    <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true"
+                       data-toggle="tab" tabindex="0"><span class="fa fa-mortar-board"></span><span class="hidden-xs">İletişim</span></a>
+                    <div class="whiteBlock"></div>
+                </li>
+
+                <li class="tab fancyTab">
+                    <div class="arrow-down">
+                        <div class="arrow-down-inner"></div>
+                    </div>
+                    <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true"
+                       data-toggle="tab" tabindex="0"><span class="fa fa-stack-overflow"></span><span class="hidden-xs">Referanslar</span></a>
+                    <div class="whiteBlock"></div>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content fancyTabContent" aria-live="polite">
+                <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0"
+                     aria-hidden="false" tabindex="0">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[title]" class="form-control"
+                                               value="{{ setting.title }}" placeholder="title">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[description]" class="form-control"
+                                               value="{{ setting.description }}" placeholder="description">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">keywords</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[keywords]" class="form-control"
+                                               value="{{ setting.keywords }}" placeholder="keywords">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">company</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[company]" class="form-control"
+                                               value="{{ setting.company }}" placeholder="company">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[address]" class="form-control"
+                                               value="{{ setting.address }}" placeholder="address">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">fax</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[fax]" class="form-control"
+                                               value="{{ setting.fax }}" placeholder="fax">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">phone</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[phone]" class="form-control"
+                                               value="{{ setting.phone }}" placeholder="phone">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">email</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[email]" class="form-control"
+                                               value="{{ setting.email }}" placeholder="email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">facebook</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[facebook]" class="form-control"
+                                               value="{{ setting.facebook }}" placeholder="facebook">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">twitter</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[twitter]" class="form-control"
+                                               value="{{ setting.twitter }}" placeholder="twitter">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">linkedin</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[linkedin]" class="form-control"
+                                               value="{{ setting.linkedin }}" placeholder="linkedin">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">dribble</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[dribble]" class="form-control"
+                                               value="{{ setting.dribble }}" placeholder="dribble">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label hor-form">googleplus</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="setting[googleplus]" class="form-control"
+                                               value="{{ setting.googleplus }}" placeholder="googleplus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true"
+                     tabindex="0">
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label hor-form">smtpserver</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="setting[smtpserver]" class="form-control"
+                                           value="{{ setting.smtpserver }}" placeholder="smtpserver">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label hor-form">smtpemail</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="setting[smtpemail]" class="form-control"
+                                           value="{{ setting.smtpemail }}" placeholder="smtpemail">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label hor-form">smtppassword</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="setting[smtppassword]" class="form-control"
+                                           value="{{ setting.smtppassword }}" placeholder="smtppassword">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label hor-form">smtpport</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="setting[smtpport]" class="form-control"
+                                           value="{{ setting.smtpport }}" placeholder="smtpport">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label hor-form">status</label>
+                                <div class="col-sm-10">
+                                    <select name="setting[status]" class="form-control">
+                                        <option>{{ setting.status }}</option>
+                                        <option>True</option>
+                                        <option>False</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true"
+                     tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea id="aboutus" name="setting[aboutus]"> {{ setting.aboutus }}</textarea>
+                                <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#aboutus'), {
+                                            removePlugins: ['Heading', 'Link'],
+                                            toolbar: ['bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote']
+                                        })
+                                        .catch(error => {
+                                            console.log(error);
+                                        });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true"
+                     tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea id="contact" name="setting[contact]"> {{ setting.contact }}</textarea>
+                                <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#contact'), {
+                                            removePlugins: ['Heading', 'Link'],
+                                            toolbar: ['bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote']
+                                        })
+                                        .catch(error => {
+                                            console.log(error);
+                                        });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true"
+                     tabindex="0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea id="referances"
+                                          name="setting[referances]"> {{ setting.referances }}</textarea>
+                                <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#referances'), {
+                                            removePlugins: ['Heading', 'Link'],
+                                            toolbar: ['bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote']
+                                        })
+                                        .catch(error => {
+                                            console.log(error);
+                                        });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10" style="margin-top: 14px; margin-left: 142px;">
+            <button type="submit" class="btn btn-default">Güncelle</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+

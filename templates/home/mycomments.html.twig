@@ -1,0 +1,53 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Orders index{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'home/_usersidebar.html.twig' %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div style="margin-right: 30px;margin-left: 323px">
+    <section id="cart_items">
+        <div class="">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('home') }}">Home</a></li>
+                    <li class="active">Yorumlarım</li>
+                </ol>
+            </div><!--/breadcrums-->
+
+            <h1>Yorumlarım</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>productid</th>
+                    <th>comment</th>
+                    <th>status</th>
+                    <th>created_at</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for mycomment in mycomments %}
+                    <tr>
+                        <td>{{ mycomment.id }}</td>
+                        <td>{{ mycomment.productid }}</td>
+                        <td>{{ mycomment.comment }}</td>
+                        <td>{{ mycomment.status }}</td>
+                        <td>{{ mycomment.created_at }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="12">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <br><br><br>
+        </div>
+    </section> <!--/#cart_items-->
+</div>
+    {% endblock %}

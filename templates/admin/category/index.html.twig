@@ -1,0 +1,96 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Detay{% endblock %}
+
+{% block content%}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Home</a><i class="fa fa-angle-right"></i>Kategoriler</li>
+    </ol>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/basictable.css" />
+    <script type="text/javascript" src="{{ asset('admin') }}/js/jquery.basictable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').basictable();
+            $('#table-breakpoint').basictable({
+                breakpoint: 768
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-two-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/icon-font.min.css" type='text/css' />
+
+    <h3>Kategori Detay  &emsp;
+        <a href="{{ path('admin_category_new') }}"class="hvr-icon-float-away col-12">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yeni Kategori</a>
+    </h3>
+    <table id="table-one-axis" class="one-axis">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kategorisi</th>
+            <th>Başlığı</th>
+            <th>Anahtar kelimeleri</th>
+            <th>Açıklamaları</th>
+            <th>Durumu</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.parentid }}</td>
+                <td>{{ category.title }}</td>
+                <td>{{ category.keywords }}</td>
+                <td>{{ category.description }}</td>
+                <td>{{ category.status }}</td>
+                <td>
+                    <a href="{{ path('admin_category_show', {'id': category.id}) }}"class="btn btn-xs btn-primary btn-block">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_category_edit', {'id': category.id}) }}"class="btn btn-xs btn-primary btn-block col-7">edit</a>
+                </td>
+                <td>
+                    {{ include('admin/category/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ asset('admin') }}/js/jquery.nicescroll.js"></script>
+    <script src="{{ asset('admin') }}/js/scripts.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('admin') }}/js/bootstrap.min.js"></script>
+    <!-- /Bootstrap Core JavaScript -->
+    <div class="inner-block">
+        <!-- /Inner block lazım olabilir template'de vardı... -->
+    </div>
+    <br><!-- /Footer ile arada boşluk kalmamıştı br attım.Kod eksik geldi büyük ihtimal -->
+{% endblock %}

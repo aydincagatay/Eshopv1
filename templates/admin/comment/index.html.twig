@@ -1,0 +1,76 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Orders index{% endblock %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/table-style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/basictable.css"/>
+    <script type="text/javascript" src="{{ asset('admin') }}/js/jquery.basictable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table').basictable();
+            $('#table-breakpoint').basictable({
+                breakpoint: 1
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-one-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet'
+          type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/icon-font.min.css" type='text/css'/>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('admin') }}">Home</a><i class="fa fa-angle-right"></i>Yorumlar</li>
+    </ol>
+    <table id="table-one-axis" class="one-axis">
+
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Userid</th>
+            <th>productid</th>
+            <th>comment</th>
+            <th>status</th>
+            <th>created_at</th>
+            <th>updated_at</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.userid }}</td>
+                <td>{{ comment.productid }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.status }}</td>
+                <td>{{ comment.created_at|date("m/d/Y") }}</td>
+                <td>{{ comment.updated_at|date("m/d/Y") }}</td>
+                <td><a href="{{ path('admin_comment_update', {'id':comment.id}) }}" class="btn-block btn-danger btn xs">Düzenle</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

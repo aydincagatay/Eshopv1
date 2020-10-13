@@ -26,7 +26,7 @@ class ImageController extends AbstractController
     /**
      * @Route("/{pid}/new", name="admin_image_new", methods="GET|POST")
      */
-    public function new(Request $request, $pid,ImageRepository $imageRepository): Response
+    public function new(Request $request, $pid, ImageRepository $imageRepository): Response
     {
         $imagelist = $imageRepository->findBy(
             ['product_id' => $pid]
@@ -38,17 +38,14 @@ class ImageController extends AbstractController
 
         if ($request->files->get('imagename')) {
 
-            //File upload işlemleri'''''''''''''''''''''
             $file = $request->files->get('imagename');
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-            // Move the file to the directory where brochures are stored
+            $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
             try {
                 $file->move(
                     $this->getParameter('images_directory'),
                     $fileName
                 );
             } catch (FileException $e) {
-                // ... handle exception if something happens during file upload
             }
             $image->setImage($fileName);
             $image->setProductId($pid);
@@ -56,7 +53,7 @@ class ImageController extends AbstractController
             $em->persist($image);
             $em->flush();
 
-            return $this->redirectToRoute('admin_image_new',array('pid' => $pid ));
+            return $this->redirectToRoute('admin_image_new', array('pid' => $pid));
         }
 
         return $this->render('admin/image/new.html.twig', [
@@ -78,7 +75,7 @@ class ImageController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_image_edit", methods="GET|POST")
      */
-    public function edit(Request $request,$id,Image $image): Response
+    public function edit(Request $request, $id, Image $image): Response
     {
         $form = $this->createForm(ImageType::class, $image);
         $form->handleRequest($request);
@@ -100,7 +97,7 @@ class ImageController extends AbstractController
      */
     public function delete(Request $request, Image $image): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $image->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($image);
             $em->flush();
@@ -113,13 +110,13 @@ class ImageController extends AbstractController
     /**
      * @Route("/{id}/{pid}", name="admin_image_del", methods="GET")
      */
-    public function del(Request $request, Image $image,$pid): Response
+    public function del(Request $request, Image $image, $pid): Response
     {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($image);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($image);
+        $em->flush();
 
-        return $this->redirectToRoute('admin_image_new',array('pid' => $pid ));
+        return $this->redirectToRoute('admin_image_new', array('pid' => $pid));
     }
 
 

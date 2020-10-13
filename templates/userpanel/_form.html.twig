@@ -1,0 +1,57 @@
+<form method="post" name="user" class="form-horizontal" style="margin-bottom: 10px">
+       <div style="margin-left: 128px"><h3><span>Kullanıcı bilgilerinizi güncelleyin</span></h3></div>
+    <br>
+            <label class="col-sm-2 control-label">Adı Soyadı : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="name" value="{{ user.name }}">
+        </div>
+ <br><br>
+
+        <label class="col-sm-2 control-label">Email : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="email" value="{{ user.email }}">
+        </div>
+ <br><br>
+
+        <label class="col-sm-2 control-label">Şifre : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="password" value="">
+        </div>
+ <br><br>
+    
+        <label class="col-sm-2 control-label">Türü : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="roles" value="{{ user.roles|join }}" disabled>
+        </div>
+ <br><br>
+    
+        <label class="col-sm-2 control-label">Adres : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="address" value="{{ user.address }}">
+        </div>
+ <br><br>
+    
+        <label class="col-sm-2 control-label">Şehir : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="city" value="{{ user.city }}">
+        </div>
+ <br><br>
+    
+        <label class="col-sm-2 control-label">Durum : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="status" value="{{ user.status }}" disabled>
+        </div>
+ <br><br>
+    
+        <label class="col-sm-2 control-label">Telefon : </label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="phone" value="{{ user.phone }}">
+        </div>
+    <div class="replay-box">
+        <input type="hidden" name="token" value="{{ csrf_token('user-form') }}">
+        <input type="submit" value="Güncelle" style="margin-left: 382px" class="btn btn-primary">
+        <hr>
+
+    </div>
+
+</form>

@@ -1,0 +1,75 @@
+{% extends 'adminbase.html.twig' %}
+
+    {% block title %}Alışverişi sonlandır{% endblock %}
+    {% block sidebar %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% include 'home/_usersidebar.html.twig' %}
+        {% endif %}
+    {% endblock %}
+    {% block content %}
+        <div style="margin-right: 30px;margin-left: 323px">
+            <section id="cart_items">
+                <div class="">
+
+                        <h2>Onayla ve Ödeme yap</h2>
+                    </div>
+                    <div class="table-responsive cart_info">
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr class="cart_menu">
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Sale price</th>
+                                <th>Total</th>
+                                <th>actions</th>
+                                <td></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for shopcart in shopcarts %}
+                                <tr>
+                                    <td class="cart_product">
+                                        <img src="{{ asset("uploads") }}/images/{{ shopcart.image }}" class="girl img-responsive" style="max-width: 55px" alt="" />
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4>{{ shopcart.title }}</h4>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">{{ shopcart.quantity }}</p>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">{{ shopcart.sprice }}</p>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">{{ shopcart.quantity * shopcart.sprice }}</p>
+                                    </td>
+                                    <td class="cart_delete" style="position: absolute;margin-top: 20px">
+                                        {{ include('shopcart/_delete_form.html.twig') }}
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                                <td colspan="2">
+                                    <table class="table table-condensed total-result">
+                                        <tr>
+                                            <td>Total</td>
+                                            <td><input type="text" name="orders[amount]" value="{{ total }}" style="max-width: 60px "></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br><br>
+
+
+            </section> <!--/#cart_items-->
+        </div>
+{% endblock %}

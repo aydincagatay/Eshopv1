@@ -20,19 +20,18 @@ class SettingController extends AbstractController
      */
     public function index(SettingRepository $settingRepository): Response
     {
-        $setdata=$settingRepository->findAll();
-        if(!($setdata)){
-            $setting=new Setting();
-            $em=$this->getDoctrine()->getManager();
+        $setdata = $settingRepository->findAll();
+        if (!($setdata)) {
+            $setting = new Setting();
+            $em = $this->getDoctrine()->getManager();
             $setting->setTitle("test");
             $em->persist($setting);
             $em->flush();
-            $setdata=$settingRepository->findAll();
+            $setdata = $settingRepository->findAll();
             dump($setdata);
             die();
         }
         return $this->redirectToRoute('admin_setting_edit', ['id' => $setdata[0]->getId()]);
-        //return $this->redirectToRoute('admin/setting/index.html.twig', ['settings' => $settingRepository->findAll()]);
     }
 
     /**
@@ -74,9 +73,9 @@ class SettingController extends AbstractController
         $form = $this->createForm(SettingType::class, $setting);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Kayıt güncelleme başarılı');
             return $this->redirectToRoute('admin_setting_index', ['id' => $setting->getId()]);
         }
 
@@ -91,7 +90,7 @@ class SettingController extends AbstractController
      */
     public function delete(Request $request, Setting $setting): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$setting->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $setting->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($setting);
             $em->flush();

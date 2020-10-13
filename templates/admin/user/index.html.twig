@@ -1,0 +1,85 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Listesi{% endblock %}
+
+{% block content%}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ path('admin') }}">Home</a><i class="fa fa-angle-right"></i>Üyeler</li>
+    </ol>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/basictable.css" />
+    <script type="text/javascript" src="{{ asset('admin') }}/js/jquery.basictable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').basictable();
+
+            $('#table-breakpoint').basictable({
+                breakpoint: 768
+            });
+
+            $('#table-swap-axis').basictable({
+                swapAxis: true
+            });
+
+            $('#table-force-off').basictable({
+                forceResponsive: false
+            });
+
+            $('#table-no-resize').basictable({
+                noResize: true
+            });
+
+            $('#table-one-axis').basictable();
+
+            $('#table-max-height').basictable({
+                tableWrapper: true
+            });
+        });
+    </script>
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'/>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/icon-font.min.css" type='text/css' />
+    <h3>Üye Listesi  &emsp;
+            <a href="{{ path('admin_user_new') }}"class="hvr-icon-float-away" style="margin-left:40px">  &nbsp;&nbsp;&nbsp;&nbsp;Yeni üye</a>
+    </h3>
+
+    <table id="table-one-axis" class="one-axis">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Adı Soyadı</th>
+            <th>Email</th>
+            <th>Durum</th>
+            <th>Roller</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.status }}</td>
+                <td>{% for item in user.roles %}
+                        {{ item }}
+                    {% endfor %}
+                </td>
+                <td><a href="{{ path('admin_user_edit', {'id':user.id}) }}" class="btn-block btn-danger btn xs">Düzenle</a></td>
+                <td><a href="{{ path('admin_user_delete', {'id':user.id}) }}" class="btn-block btn-danger btn xs">Sil</a></td>
+            </tr>
+        {% endfor %}
+        </tbody></table>
+    <script src="{{ asset('admin') }}/js/jquery.nicescroll.js"></script>
+    <script src="{{ asset('admin') }}/js/scripts.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('admin') }}/js/bootstrap.min.js"></script>
+    <!-- /Bootstrap Core JavaScript -->
+    <div class="inner-block">
+        <!-- /Inner block lazım olabilir template'de vardı... -->
+    </div>
+    <br><!-- /Footer ile arada boşluk kalmamıştı br attım.Kod eksik geldi büyük ihtimal -->
+{% endblock %}
